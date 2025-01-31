@@ -16,7 +16,11 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception{ //csrf().disable() meka dnw spring wlin dena default security eka ain kra gnn
         http.csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/api/v1/account/my-account","/api/v1/longs/my-long").authenticated()
+//                .requestMatchers("/api/v1/account/my-account").hasAuthority("admin") me krmeta krot databse eke data saave krnn oni admin,user this type
+//                .requestMatchers("/api/v1/longs/my-long").hasAuthority("user")
+                //below method we have to sava data in data base ROLE_ADMIN,ROLE_USER this type
+                .requestMatchers("/api/v1/account/my-account").hasRole("ADMIN")
+                .requestMatchers("/api/v1/longs/my-long").hasRole("USER")
                 .requestMatchers("/api/v1/notices/my-notice","/api/v1/user/register").permitAll()
                 .and().formLogin().and().httpBasic();
         return http.build();
