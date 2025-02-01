@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer [opened]="opened" mode="side">
+    <mat-list>
+      <mat-list-item [routerLinkActive]="['active']">
+        <mat-icon color="primary" mat-list-icon inline>directions_car</mat-icon>
+        <a href="" mat-line routerLink="/car">Car</a>
+      </mat-list-item>
+
+      <mat-list-item [routerLinkActive]="['active']">
+        <mat-icon color="primary" mat-list-icon inline>local_gas_station</mat-icon>
+        <a href="" mat-line>Fuil-Type</a>
+      </mat-list-item>
+
+      <mat-list-item [routerLinkActive]="['active']">
+        <mat-icon color="primary" mat-list-icon inline>book_online</mat-icon>
+        <a href="" mat-line>Reservation</a>
+      </mat-list-item>
+
+      <mat-list-item [routerLinkActive]="['active']">
+        <mat-icon color="primary" mat-list-icon inline>report</mat-icon>
+        <a href="" mat-line>Reports</a>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-container>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+</mat-drawer-container>
