@@ -1,5 +1,7 @@
 .example-spacer {
     flex: 1 1 auto;
-    
+  }
+  .custom-toolbar {
+    background-color: rgb(93, 93, 179) !important; /* Ensures the background color is applied */
   }
   

@@ -1,8 +1,11 @@
-<mat-toolbar color="primary" role="heading">
+<mat-toolbar class="custom-toolbar" role="heading">
     <mat-toolbar-row>
-        <mat-icon style="cursor: pointer; color: white;">
-            menu
-           </mat-icon>
+        <mat-icon style="cursor: pointer; color: white;" (click)="toggleMenu()" > menu </mat-icon>
+
+        <span class="example-spacer"></span>
+        <span style="color: white;">Full Stack</span>
+
+        <span class="example-spacer"></span>
+        <mat-icon style="cursor: pointer; color: red;"> logout</mat-icon>
     </mat-toolbar-row>
-  </mat-toolbar>
-  
+</mat-toolbar>
