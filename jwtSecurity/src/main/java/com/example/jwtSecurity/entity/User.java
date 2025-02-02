@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.jwtSecurity.entity.Role;
 
 import java.util.Set;
 
@@ -25,6 +26,6 @@ public class User {
             inverseJoinColumns = {
                     @JoinColumn(name = "ROLE_ID")
             })
-    private Set<com.example.jwtSecurity.entity.Role> roles;
+    private Set<Role> roles;
 
 }
