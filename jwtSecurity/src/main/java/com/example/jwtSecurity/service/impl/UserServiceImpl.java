@@ -6,6 +6,7 @@ import com.example.jwtSecurity.repo.RoleRepo;
 import com.example.jwtSecurity.repo.UserRepo;
 import com.example.jwtSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -18,6 +19,8 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
     @Autowired
     private RoleRepo roleRepo;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User registerNewuser(User user) {
@@ -42,7 +45,7 @@ public class UserServiceImpl implements UserService {
             User initUser = new User();
             initUser.setUserName("Admin1");
             initUser.setAge(20);
-            initUser.setPassword("admin123");
+            initUser.setPassword(getEncodePassword("admin123"));
 
             Set<Role> adminRoles = new HashSet<>();
             adminRoles.add(adminRole); //add admin role
@@ -54,7 +57,7 @@ public class UserServiceImpl implements UserService {
             User initUserTwo = new User();
             initUserTwo.setUserName("User1");
             initUserTwo.setAge(20);
-            initUserTwo.setPassword("user123");
+            initUserTwo.setPassword(getEncodePassword("user123"));
 
             Set<Role> userRoles = new HashSet<>();
             userRoles.add(userRole);
@@ -62,6 +65,9 @@ public class UserServiceImpl implements UserService {
             initUserTwo.setRoles(userRoles);
             userRepo.save(initUserTwo);
         }
+    }
+    public String getEncodePassword(String password){
+        return passwordEncoder.encode(password);
     }
 
 }
