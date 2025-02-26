@@ -16,16 +16,23 @@ public class JwtUtil {
     private static final String SECRET_KEY = "12345678";
     private static final int TOKEN_VALIDITY = 60*60*5;
 
+    // Extract username from token
     public String getUsernameFromToken(String token){
         return getClaimFromToken(token, Claims::getSubject);
     }
+
+    // Extract specific claim from token
     public <T> T getClaimFromToken(String token, Function<Claims,T> claimsResolver){
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
     }
 
-    private Claims getAllClaimsFromToken(String token){
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJwt(token).getBody();
+    // Retrieve all claims from token
+    private Claims getAllClaimsFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)  // FIX: Use `parseClaimsJws`, not `parseClaimsJwt`
+                .getBody();
     }
 
     //token validation
