@@ -2,9 +2,11 @@ package com.example.jwtSecurity.controller;
 
 import com.example.jwtSecurity.entity.User;
 import com.example.jwtSecurity.service.UserService;
-import jakarta.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/user")

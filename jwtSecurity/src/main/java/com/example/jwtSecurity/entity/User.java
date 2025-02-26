@@ -1,11 +1,11 @@
 package com.example.jwtSecurity.entity;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.example.jwtSecurity.entity.Role;
 
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
